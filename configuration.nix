@@ -183,8 +183,15 @@
     dejavu_fonts
   ];
   
+  system.activationScripts.fixEtcNixosOwnership.text = ''
+  echo "Fixing ownership of /etc/nixos..."
+  chown -R smilez:users /etc/nixos || true
+'';
+
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-     # Audio (PipeWire + WirePlumber)
+    
+   # Audio (PipeWire + WirePlumber)
   services.pulseaudio.enable = false;
 
   services.pipewire = {
