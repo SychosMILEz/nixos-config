@@ -103,7 +103,7 @@
   # 🧰 Waybar / Hyprland extras (if you have custom configs)
   xdg.configFile."waybar/config.jsonc".source = ./waybar/config.jsonc;
   xdg.configFile."waybar/style.css".source = ./waybar/style.css;
-  xdg.configFile."hypr/hyprland.conf".source = ./hypr/hyprland.conf;
+  xdg.configFile."hypr".source = ./hypr;
   
    home.stateVersion = "25.05";
 }
