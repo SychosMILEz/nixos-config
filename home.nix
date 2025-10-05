@@ -33,6 +33,7 @@
     grim
     slurp
     swappy
+    lollypop
 
   # --- Dev / creative workflow ---
     vscode
@@ -67,8 +68,8 @@
   programs.fish = {
     enable = true;
     shellAliases = {
-      rebuild = "sudo nixos-rebuild switch --flake /etc/nixos";
-      updateos = "sudo nix flake update && rebuild";
+      rebuild = "fish -c 'cd /etc/nixos; sudo nixos-rebuild switch --flake /etc/nixos; if not git diff --quiet; git add .; git commit -m \"Auto update: rebuild on (date +%Y-%m-%d_%H:%M:%S)\"; git push; else; echo No config changes to commit.; end'";
+      updateos = "fish -c 'cd /etc/nixos; nix flake update; if not git diff --quiet flake.lock; git add flake.lock; git commit -m \"Updated flake.lock on (date +%Y-%m-%d_%H:%M:%S)\"; git push; else; echo No flake updates to commit.; end; sudo nixos-rebuild switch --flake /etc/nixos'";
       ls = "eza --icons --group-directories-first";
       cat = "bat";
       fetch = "fastfetch";
@@ -102,6 +103,6 @@
   # 🧰 Waybar / Hyprland extras (if you have custom configs)
   xdg.configFile."waybar/config.jsonc".source = ./waybar/config.jsonc;
   xdg.configFile."waybar/style.css".source = ./waybar/style.css;
-
+  xdg.configFile."hypr/hyprland.conf".source = ./hypr/hyprland.conf
   home.stateVersion = "25.05";
 }
