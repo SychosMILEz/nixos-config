@@ -1,0 +1,5 @@
+result
+*.swp
+*.lock
+.DS_Store
+.cache/
