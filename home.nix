@@ -25,7 +25,6 @@
 
   # --- Multimedia / UI ---
     mpv
-    obs-studio
     haruna
     kdePackages.gwenview
     xdg-utils
