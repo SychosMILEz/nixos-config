@@ -170,7 +170,8 @@
     grim slurp swappy   # screenshots
     xdg-utils
     xfce.thunar-archive-plugin
-    xfce.exo 
+    xfce.exo
+    unzip 
   ];
  
   
