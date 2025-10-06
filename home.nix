@@ -46,10 +46,6 @@
     go
     godot
     blender
-    inkscape
-    gimp  
-    floorp
-    pkgs.xfce.thunar
     xdg-utils
     xfce.exo
     gvfs
