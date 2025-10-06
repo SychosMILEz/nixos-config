@@ -85,13 +85,6 @@
   # Enable font rendering for user apps
   fonts.fontconfig.enable = true;
 
-  # ───────────────────────────────────────────────
-  # 🧰 Config Files (Waybar / Hyprland / OBS)
-  # ───────────────────────────────────────────────
-  xdg.configFile."waybar/config.jsonc".source = ./waybar/config.jsonc;
-  xdg.configFile."waybar/style.css".source   = ./waybar/style.css;
-  xdg.configFile."hypr".source               = ./hypr;
-  xdg.configFile."obs-studio".source         = ./obs-studio;
 
   # ───────────────────────────────────────────────
   # 🏁 Version Lock
