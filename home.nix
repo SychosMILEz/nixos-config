@@ -29,7 +29,17 @@
     lollypop           # music player (optional)
     vscode             # code editor
     git                # version control
-  ];
+ 
+    # --- Fonts and colors ---
+     nerd-fonts.jetbrains-mono
+     fira-code
+     dejavu_fonts
+     noto-fonts
+     noto-fonts-emoji
+     papirus-icon-theme
+     bibata-cursors
+     catppuccin-gtk
+ ];
 
   # ───────────────────────────────────────────────
   # 📂 Default Applications
@@ -84,18 +94,6 @@ gtk = {
   gtk4.extraConfig = { gtk-application-prefer-dark-theme = true; };
 };
 
-fonts.fontconfig.enable = true;
-
-home.packages = with pkgs; [
-  nerd-fonts.jetbrains-mono
-  fira-code
-  dejavu_fonts
-  noto-fonts
-  noto-fonts-emoji
-  papirus-icon-theme
-  bibata-cursors
-  catppuccin-gtk
-];
   # Enable font rendering for user apps
   fonts.fontconfig.enable = true;
 
