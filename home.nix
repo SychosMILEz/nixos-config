@@ -55,6 +55,9 @@
   # ───────────────────────────────────────────────
   programs.fish = {
     enable = true;
+    loginShellInit = ''
+     starship init fish | source
+    '';
     shellAliases = {
       # 🔧 System management aliases
       rebuild  = "fish -c 'cd /etc/nixos; sudo nixos-rebuild switch --flake /etc/nixos; if not git diff --quiet; git add .; git commit -m \"Auto update: rebuild on (date +%Y-%m-%d_%H:%M:%S)\"; git push; else; echo No config changes to commit.; end'";
