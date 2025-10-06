@@ -99,8 +99,8 @@ gtk = {
 
   home.file.".local/share/fonts/BadaboomBB.ttf".source =
   pkgs.fetchurl {
-    url = "https://www.1001fonts.com/download/badaboom-bb.zip";
-    sha256 = "sha256-00l5b2j4kaqn98l0xcwx9rn38vp2w6wgkrv34ybj77jhad3hr3jg";
+    url = "https://st.1001fonts.net/download/font/badaboom-bb.regular.ttf";
+    sha256 = "sha256-175yq6vy6i4bkd2drcgarzqx7ngmi1rkcpnf2xn43ydn6nk55vmj";
   };
 
   # ───────────────────────────────────────────────
