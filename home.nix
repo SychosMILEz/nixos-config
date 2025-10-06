@@ -57,22 +57,6 @@
     xfce.thunar-archive-plugin
   ];
 
-  # ---Streaming + Recording---
-  programs.obs-studio = {
-    enable = true;
-
-    plugins = with pkgs.obs-studio-plugins; [
-      wlrobs
-      obs-backgroundremoval
-      obs-pipewire-audio-capture
-      obs-vaapi   #optional AMD hardware acceleration
-      obs-gstreamer
-      obs-vkcapture
-      pkgs.obs-studio-plugins.obs-multi-rtmp  # multi stream
-      pkgs.obs-studio-plugins.wlrobs     # wayland screen capture
-    ];
-  };
-
    # Make Thunar the default for folders
   xdg.mimeApps.enable = true;
   xdg.mimeApps.defaultApplications = {
