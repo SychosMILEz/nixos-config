@@ -69,6 +69,7 @@
       fetch  = "fastfetch";
       htop   = "btop";
     };
+    loginShell = true;
   };
 
   # ───────────────────────────────────────────────
