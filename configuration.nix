@@ -174,7 +174,9 @@
     xfce.exo
     unzip
     file-roller
-    thunderbird 
+    thunderbird
+    lm_sensors
+    radeontop 
   ];
  
   
