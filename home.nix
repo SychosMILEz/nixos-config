@@ -97,11 +97,14 @@ gtk = {
   # Enable font rendering for user apps
   fonts.fontconfig.enable = true;
 
-home.file.".local/share/fonts/BadaboomBB.ttf".source =
-  pkgs.fetchurl {
-    url = "https://st.1001fonts.net/download/font/badaboom-bb.regular.ttf";
-    sha256 = "sha256-175yq6vy6i4bkd2drcgarzqx7ngmi1rkcpnf2xn43ydn6nk55vmj";
-  };
+home.file.".local/share/fonts/BadaboomBB.ttf".source = 
+  pkgs.runCommand "badaboom-font" { } ''
+    mkdir -p $out
+    cd $out
+    curl -L https://dl.1001fonts.com/badaboom-bb.font.zip -o badaboom.zip
+    unzip -j badaboom.zip "Badaboom BB.ttf"
+    mv "Badaboom BB.ttf" $out/BadaboomBB.ttf
+  '';
 
   # ───────────────────────────────────────────────
   # 🏁 Version Lock
