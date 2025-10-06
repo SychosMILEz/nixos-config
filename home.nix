@@ -66,25 +66,44 @@
   # ───────────────────────────────────────────────
   # 🪟 GTK + Appearance
   # ───────────────────────────────────────────────
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Adwaita-dark";
-      package = pkgs.gnome-themes-extra;
-    };
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-    cursorTheme = {
-      name = "Bibata-Modern-Classic";
-      package = pkgs.bibata-cursors;
-    };
+gtk = {
+  enable = true;
+  theme = {
+    name = "Catppuccin-Mocha-Blue-Dark";
+    package = pkgs.catppuccin-gtk;
   };
+  iconTheme = {
+    name = "Papirus-Dark";
+    package = pkgs.papirus-icon-theme;
+  };
+  cursorTheme = {
+    name = "Bibata-Modern-Classic";
+    package = pkgs.bibata-cursors;
+  };
+  gtk3.extraConfig = { gtk-application-prefer-dark-theme = 1; };
+  gtk4.extraConfig = { gtk-application-prefer-dark-theme = true; };
+};
 
+fonts.fontconfig.enable = true;
+
+home.packages = with pkgs; [
+  nerd-fonts.jetbrains-mono
+  fira-code
+  dejavu_fonts
+  noto-fonts
+  noto-fonts-emoji
+  papirus-icon-theme
+  bibata-cursors
+  catppuccin-gtk
+];
   # Enable font rendering for user apps
   fonts.fontconfig.enable = true;
 
+  home.file.".local/share/fonts/BadaboomBB.ttf".source =
+  pkgs.fetchurl {
+    url = "https://www.1001fonts.com/download/badaboom-bb.zip";
+    sha256 = "sha256-00l5b2j4kaqn98l0xcwx9rn38vp2w6wgkrv34ybj77jhad3hr3jg";
+  };
 
   # ───────────────────────────────────────────────
   # 🏁 Version Lock
