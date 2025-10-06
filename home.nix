@@ -50,27 +50,33 @@
     "application/x-directory" = [ "thunar.desktop" ];
   };
 
-  # ───────────────────────────────────────────────
-  # 🐚 Shell Configuration
-  # ───────────────────────────────────────────────
-  programs.fish = {
-    enable = true;
-    loginShellInit = ''
-     starship init fish | source
-    '';
-    shellAliases = {
-      # 🔧 System management aliases
-      rebuild  = "fish -c 'cd /etc/nixos; sudo nixos-rebuild switch --flake /etc/nixos; if not git diff --quiet; git add .; git commit -m \"Auto update: rebuild on (date +%Y-%m-%d_%H:%M:%S)\"; git push; else; echo No config changes to commit.; end'";
-      updateos = "fish -c 'cd /etc/nixos; nix flake update; if not git diff --quiet flake.lock; git add flake.lock; git commit -m \"Updated flake.lock on (date +%Y-%m-%d_%H:%M:%S)\"; git push; else; echo No flake updates to commit.; end; sudo nixos-rebuild switch --flake /etc/nixos'";
+programs.fish = {
+  enable = true;
 
-      # 🧭 Quality-of-life aliases
-      ls     = "eza --icons --group-directories-first";
-      cat    = "bat";
-      fetch  = "fastfetch";
-      htop   = "btop";
-    };
+  # 🐚 Ensures Fish loads Starship prompt properly
+  interactiveShellInit = ''
+    if type -q starship
+      starship init fish | source
+    end
+  '';
+
+  # 🧠 Useful aliases (organized + clean)
+  shellAliases = {
+    # 🔧 System management
+    rebuild  = "cd /etc/nixos; and sudo nixos-rebuild switch --flake /etc/nixos";
+    updateos = "cd /etc/nixos; and nix flake update; and sudo nixos-rebuild switch --flake /etc/nixos";
+
+    # 🧭 Quality-of-life
+    ls     = "eza --icons --group-directories-first";
+    cat    = "bat";
+    fetch  = "fastfetch";
+    htop   = "btop";
+    vim    = "nvim";
   };
 
+  # 🧰 Automatically set Fish as login shell
+  loginShell = true;
+};
   # ───────────────────────────────────────────────
   # ✨ Prompt Styling
   # ───────────────────────────────────────────────
