@@ -104,6 +104,7 @@
     rofi
     bat
     starship    
+    haruna
 
      # ---- Audio / Media ----
     wireplumber
@@ -167,7 +168,9 @@
     wget
     curl
     grim slurp swappy   # screenshots
-    xdg-utils 
+    xdg-utils
+    xfce.thunar-archive-plugin
+    xfce.exo 
   ];
  
   

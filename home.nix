@@ -7,77 +7,65 @@
   # Let Home Manager manage itself
   programs.home-manager.enable = true;
 
-  # packages installed just for this user
+  # ───────────────────────────────────────────────
+  # 🧩 User Packages (lightweight + personal tools)
+  # ───────────────────────────────────────────────
   home.packages = with pkgs; [
-  # --- Core tools ---
-    fastfetch
-    btop
-    fish
-    starship
-    neovim
-    kitty
-    bat
-    fzf
-    eza
-    ripgrep
-    fd
-    viu              # image preview in terminal
 
-  # --- Multimedia / UI ---
-    mpv
-    haruna
-    kdePackages.gwenview
-    xdg-utils
-    wl-clipboard
-    grim
-    slurp
-    swappy
-    lollypop
+    # --- Core CLI / Utility tools ---
+    fastfetch          # system info
+    btop               # process monitor
+    fish               # shell (config below)
+    starship           # prompt (config below)
+    neovim             # text editor
+    bat                # better cat
+    fzf                # fuzzy finder
+    eza                # better ls
+    ripgrep            # recursive grep
+    fd                 # faster find
+    viu                # image preview in terminal
 
-  # --- Dev / creative workflow ---
-    vscode
-    git
-    gcc
-    gnumake
-    cmake
-    python3
-    nodejs
-    rustc cargo
-    go
-    godot
-    blender
-    xdg-utils
-    xfce.exo
-    gvfs
-    xfce.thunar-archive-plugin
+    # --- Personal apps ---
+    lollypop           # music player (optional)
+    vscode             # code editor
+    git                # version control
   ];
 
-   # Make Thunar the default for folders
+  # ───────────────────────────────────────────────
+  # 📂 Default Applications
+  # ───────────────────────────────────────────────
   xdg.mimeApps.enable = true;
   xdg.mimeApps.defaultApplications = {
-    "inode/directory"     = [ "thunar.desktop" ];
+    "inode/directory"         = [ "thunar.desktop" ];
     "application/x-directory" = [ "thunar.desktop" ];
   };
 
- 
-
-    # 🐚 Shell configuration
+  # ───────────────────────────────────────────────
+  # 🐚 Shell Configuration
+  # ───────────────────────────────────────────────
   programs.fish = {
     enable = true;
     shellAliases = {
-      rebuild = "fish -c 'cd /etc/nixos; sudo nixos-rebuild switch --flake /etc/nixos; if not git diff --quiet; git add .; git commit -m \"Auto update: rebuild on (date +%Y-%m-%d_%H:%M:%S)\"; git push; else; echo No config changes to commit.; end'";
+      # 🔧 System management aliases
+      rebuild  = "fish -c 'cd /etc/nixos; sudo nixos-rebuild switch --flake /etc/nixos; if not git diff --quiet; git add .; git commit -m \"Auto update: rebuild on (date +%Y-%m-%d_%H:%M:%S)\"; git push; else; echo No config changes to commit.; end'";
       updateos = "fish -c 'cd /etc/nixos; nix flake update; if not git diff --quiet flake.lock; git add flake.lock; git commit -m \"Updated flake.lock on (date +%Y-%m-%d_%H:%M:%S)\"; git push; else; echo No flake updates to commit.; end; sudo nixos-rebuild switch --flake /etc/nixos'";
-      ls = "eza --icons --group-directories-first";
-      cat = "bat";
-      fetch = "fastfetch";
-      htop = "btop";
+
+      # 🧭 Quality-of-life aliases
+      ls     = "eza --icons --group-directories-first";
+      cat    = "bat";
+      fetch  = "fastfetch";
+      htop   = "btop";
     };
   };
 
-  # ✨ Prompt styling
+  # ───────────────────────────────────────────────
+  # ✨ Prompt Styling
+  # ───────────────────────────────────────────────
   programs.starship.enable = true;
 
-  # 🪟 GTK + appearance
+  # ───────────────────────────────────────────────
+  # 🪟 GTK + Appearance
+  # ───────────────────────────────────────────────
   gtk = {
     enable = true;
     theme = {
@@ -94,15 +82,19 @@
     };
   };
 
-  # 🔤 Fonts (for user-level apps like terminal / code editors)
+  # Enable font rendering for user apps
   fonts.fontconfig.enable = true;
 
-  # 🧰 Waybar / Hyprland extras (if you have custom configs)
+  # ───────────────────────────────────────────────
+  # 🧰 Config Files (Waybar / Hyprland / OBS)
+  # ───────────────────────────────────────────────
   xdg.configFile."waybar/config.jsonc".source = ./waybar/config.jsonc;
-  xdg.configFile."waybar/style.css".source = ./waybar/style.css;
-  xdg.configFile."hypr".source = ./hypr;
-  xdg.configFile."obs-studio".source = ./obs-studio;
+  xdg.configFile."waybar/style.css".source   = ./waybar/style.css;
+  xdg.configFile."hypr".source               = ./hypr;
+  xdg.configFile."obs-studio".source         = ./obs-studio;
 
-   home.stateVersion = "25.05";
+  # ───────────────────────────────────────────────
+  # 🏁 Version Lock
+  # ───────────────────────────────────────────────
+  home.stateVersion = "25.05";
 }
- 
