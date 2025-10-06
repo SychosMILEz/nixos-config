@@ -50,33 +50,27 @@
     "application/x-directory" = [ "thunar.desktop" ];
   };
 
-programs.fish = {
-  enable = true;
+  # ───────────────────────────────────────────────
+  # 🐚 Shell Configuration
+  # ───────────────────────────────────────────────
+  programs.fish = {
+    enable = true;
+    loginShellInit = ''
+     starship init fish | source
+    '';
+    shellAliases = {
+      # 🔧 System management aliases
+      rebuild  = "cd /etc/nixos; and sudo nixos-rebuild switch --flake /etc/nixos";
+      updateos = "cd /etc/nixos; and nix flake update; and sudo nixos-rebuild switch --flake /etc/nixos";
 
-  # 🐚 Ensures Fish loads Starship prompt properly
-  interactiveShellInit = ''
-    if type -q starship
-      starship init fish | source
-    end
-  '';
-
-  # 🧠 Useful aliases (organized + clean)
-  shellAliases = {
-    # 🔧 System management
-    rebuild  = "cd /etc/nixos; and sudo nixos-rebuild switch --flake /etc/nixos";
-    updateos = "cd /etc/nixos; and nix flake update; and sudo nixos-rebuild switch --flake /etc/nixos";
-
-    # 🧭 Quality-of-life
-    ls     = "eza --icons --group-directories-first";
-    cat    = "bat";
-    fetch  = "fastfetch";
-    htop   = "btop";
-    vim    = "nvim";
+      # 🧭 Quality-of-life aliases
+      ls     = "eza --icons --group-directories-first";
+      cat    = "bat";
+      fetch  = "fastfetch";
+      htop   = "btop";
+    };
   };
 
-  # 🧰 Automatically set Fish as login shell
-  loginShell = true;
-};
   # ───────────────────────────────────────────────
   # ✨ Prompt Styling
   # ───────────────────────────────────────────────
