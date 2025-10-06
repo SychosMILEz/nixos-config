@@ -171,7 +171,8 @@
     xdg-utils
     xfce.thunar-archive-plugin
     xfce.exo
-    unzip 
+    unzip
+    file-roller 
   ];
  
   
