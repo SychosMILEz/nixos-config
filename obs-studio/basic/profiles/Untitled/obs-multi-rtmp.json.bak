@@ -1,0 +1,1 @@
+﻿{"audio_configs":[],"targets":[{"id":"2001302310","name":"youtube","output-param":{"bind_ip":"default","drop_threshold_ms":700,"max_shutdown_time_sec":30,"pframe_drop_threshold_ms":900},"protocol":"RTMP","service-param":{"key":"7e8h-hhu6-r41t-wc82-6k31","server":"rtmp://x.rtmp.youtube.com/live2","use_auth":false},"sync-start":true,"sync-stop":true}],"video_configs":[]}

@@ -107,6 +107,7 @@
   xdg.configFile."waybar/style.css".source = ./waybar/style.css;
   xdg.configFile."hypr".source = ./hypr;
   xdg.configFile."obs-studio".source = ./obs-studio;
+
    home.stateVersion = "25.05";
 }
  
