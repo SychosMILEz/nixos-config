@@ -55,9 +55,11 @@
   # ───────────────────────────────────────────────
   programs.fish = {
     enable = true;
-    loginShellInit = ''
-     starship init fish | source
-    '';
+    interactiveShellInit = ''
+    if type -q starship
+      starship init fish | source
+    end
+  '';
     shellAliases = {
       # 🔧 System management aliases
       rebuild  = "cd /etc/nixos; and sudo nixos-rebuild switch --flake /etc/nixos";
@@ -69,7 +71,6 @@
       fetch  = "fastfetch";
       htop   = "btop";
     };
-    loginShell = true;
   };
 
   # ───────────────────────────────────────────────
