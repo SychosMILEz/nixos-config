@@ -113,6 +113,7 @@
     playerctl
     ffmpeg-full
     strawberry
+    pulseaudio
 
     # ---- Video / Image Editing ----
     kdePackages.kdenlive
@@ -172,7 +173,8 @@
     xfce.thunar-archive-plugin
     xfce.exo
     unzip
-    file-roller 
+    file-roller
+    thunderbird 
   ];
  
   
