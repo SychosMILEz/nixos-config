@@ -247,16 +247,6 @@
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
 
-  fileSystems."/home/smilez/BoNeZ" = {
-    device = "/dev/disk/by-uuid/e3a1243a-a90a-4882-9fa8-74715d5af91b";
-    fsType = "ext4";
-  };
-
-  fileSystems."/home/smilez/Graves" = {
-    device = "/dev/disk/by-uuid/2ca3f6ff-0db2-47f8-8f23-be89e3accf26";
-    fsType = "ext4";
-  };
-
    # Auto Update
   
   system.autoUpgrade.enable = true;
